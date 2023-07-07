@@ -12,6 +12,9 @@ Requirement (feature wishlist):
 4) Visual indication that it is activated or not
 5) (optional) Stealth mode
 6) Small and cheap (target is to run on Trinked M0 board)
+7) (not done yet) Must survive and continue to work if powered without the computer started
+8) (not done yet) Must survive and continue to work when the the computer is powed off then on
+
 
 Initial idea to (1)enable/disable from keyboard has been to use the scrol lock key to enable and disable the jiggling.
 This is possible because your computer send lock led status to all the keyboard connected, including your mouse jiggler.
@@ -25,8 +28,11 @@ And the Caps Lock key can keep it's normal behavior when you press it only one t
 For the visual indication(4), most Adafruit board have an RGB LED, either NeoPixel or DotStar like on the Trinked M0.
 The choosen indication is to display a rainbow of colors, because everybody likes rainbow.
 
-To permit Stealth mode by default, it is possible to disable a lot of USB feature by tweeking the boot.py file.
-We can disable MIDI, Serial CDC and mass storage. Only keeping mouse for the jiggeling and keyboard for the camps lock led detection.
+To permit (5)Stealth mode, it is possible to disable a lot of the USB feature by tweeking the boot.py file.
+We can disable MIDI, Serial CDC and mass storage. Only keeping mouse for the jiggeling and keyboard for the caps lock led detection.
+To be able to enable or disable Stealth mode you need a kind of jumper or button that you would press or close the circuit at startup time.
+Since the Trinked has no such button, I soldered something on Ground and GPIO 4 (that are next to each other) and I can short that when needed.
+You still have to decide if you want it default stealth on or off. Soldering might not be needed except to change the code.
 
 ...
 
