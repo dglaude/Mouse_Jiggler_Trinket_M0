@@ -1,11 +1,10 @@
 import supervisor
-supervisor.set_next_code_file(None, reload_on_success=True, reload_on_error=True)
 supervisor.set_next_code_file(None, reload_on_error=True)
 
 RAINBOW = True           # Display a rainbow when active
-RAINBOW_DELAY = 100      # Mouse movement occurs every 256*RAINBOW_DELAY ticks, that mean every rainbow rotation reach red.
-AUTO_START = False       # Do you want jiggling to start automatically.
-WARN_NO_USB = False      # Do you want high speed blinking LED when USB is not connected.
+RAINBOW_DELAY = 50       # Mouse movement occurs every 256*RAINBOW_DELAY ticks, that mean every rainbow rotation reach red.
+AUTO_START = True        # Do you want jiggling to start automatically.
+WARN_NO_USB = True       # Do you want high speed blinking LED when USB is not connected.
 
 try:
     from myconfig import *
@@ -14,7 +13,6 @@ except ImportError:
 
 import board
 import digitalio
-#import time
 import usb_hid
 from adafruit_hid.mouse import Mouse
 from adafruit_hid.keyboard import Keyboard
@@ -33,7 +31,6 @@ def ticks_diff(ticks1, ticks2):
     return diff
 # End of code from: https://docs.circuitpython.org/en/latest/shared-bindings/supervisor/index.html
 
-RAINBOW_DELAY = 50 # Mouse movement occurs every 256*RAINBOW_DELAY ticks, that mean every rainbow rotation reach red.
 last = supervisor.ticks_ms()
 color_time = last
 
@@ -106,4 +103,3 @@ while True:
                     iterator = iter(octogonal_direction)
                     element = next(iterator)
                 mouse.move(x=distance*element[0], y=distance*element[1])
-
