@@ -40,19 +40,23 @@ By default the jiggler navigate all the rainbow color when the mouse moving acti
 
 *Mouse movement occurs every 256*RAINBOW_DELAY ticks, that mean every rainbow rotation reach red.*
 
-...
+This control how frequently the mouse is moved, and it is moved every 256 color change in the rainbow animation (even if you don't enable it).
+The same delay is used for fast blinking (attract mode) when USB is not connected.
+You may want to tune this setting depending on how fast your computer goes to sleep or detect innactivity, and how disturbing it is to have the mouse moving when you use it.
 
 ### AUTO_START
 
 *Do you want jiggling to start automatically.*
 
-...
+You can have the jiggling start automatically as soon as USB is detected. This is usefull if you permanently plug the jiggler into your computer (maybe pick a port that is not powered when your computer is powered off.
+If you don't enable auto-start, you will have to double click CAPS_LOCK everytime you want to enable it.
 
 ### WARN_NO_USB
 
 *Do you want high speed blinking LED when USB is not connected.*
 
-...
+If you don't use a USB Data cable, or if there is a problem and your computer does not connect with the mouse jiggler, the red LED from the board will blink quickly. This could also be the behaviour when you put your computer to sleep, but the mouse jiggler is connected to an always powered USB port.
+If you don't want that warning or find the fastly blinking LED disturbing, you can disable that warning.
 
 ### STEALTH_DEFAULT
 
