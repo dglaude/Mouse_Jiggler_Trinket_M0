@@ -99,3 +99,29 @@ The target is to use Trinket M0 to have a small and cheap solution (6), however,
 To recover from error, on can try to catch every possible exception, but since the code is small, forcing a restart 'on error'. This could also catch allocation memory error. In case of reboot, the current state (active or standby) can be lost. Because having the USB not connected could be the indication that the USB cable used does not contain data  a special warning indicator has been integrated.
 
 Some parameter are available to customize the behaviour of the jiggler. They are all located in the optional myoptions.py file. If the file is not present or does not define some variable, the default value will be used.
+
+## Making the software work on more M0 devices
+
+Reminder, you should avoid M0 / Samd21 devices as they have a lot of limitation and do not support any of the new tricks that CircuitPython can do... there is just not enough space for the code, nor memory for holding a full core. This comment does not apply to Raspberry Pico / RP2040, those board are M0 or M0+ but have a lot of memory and most of the time a big flash attached to it.
+
+The question is to see if we can run on other constrained platform and what changes are needed. And at one point I will have to change this repository name to not be specific to the Trinket.
+
+### SeedStudio Xiao 
+
+Normal firmware: https://circuitpython.org/board/seeeduino_xiao/
+Keyboard optimized firmware: https://circuitpython.org/board/seeeduino_xiao_kb/ (same hardware different selection of modules)
+
+The original Xiao does not have an RGB LED, it only has two LED, the green "powered" and the orange that is controlable.
+Also there are no button, not even the reset button, so it can be very simple and robust (while harder to do the initial setup or firwmare upgrade).
+
+So the code will have to replace the rainbow part by some LED way to warn the user, I think PWM out the LED to have something that is of variable light intensity would have the best effect, and we can keep the high speed blinking for alert mode when no USB is connected.
+
+### Original QT Py
+
+Product page: https://www.adafruit.com/product/4600
+Firmware: https://circuitpython.org/board/qtpy_m0/
+
+The original QT Py does not have an LED, but just that RGB NeoPixel, and that is NeoPixel, not DotStar like on the Trinket M0.
+
+So the code will need to be adapted so that it works with NeoPixel, and the fast blinking of the LED will have to be done with the NeoPixel too.
+
