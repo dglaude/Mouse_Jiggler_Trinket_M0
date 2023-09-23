@@ -12,6 +12,8 @@ Minimum installation only require the file `code.py` and a few libraries:
 * `adafruit_dotstar` (mpy file)
 * `adafruit_pixelbuf` (mpy file)
 
+*UPDATE* This has not been tested with the new release 6.0.0 of adafruit_hid ( https://github.com/adafruit/Adafruit_CircuitPython_HID/releases/tag/6.0.0 ) that add a control of the timer when the host is slow to boot and to do USB enumeration. My code use an active wait checking the USB status via supervisor and blinking rapidly to tell you there is something wrong.
+
 If you want to customize the behaviour, you can add the file  `muconfig.py` and edit to uncomment some line and choose the value you want to use in place of the default.
 
 If you want to us the Stealth mode you have to deploy the file `boot.py`, but be extremly carefull and have a wire handy to connect GPiO4 with Ground (Gnd) if you ever need to re-enable the mass storage in order to modify the code or parameter
@@ -124,4 +126,3 @@ Firmware: https://circuitpython.org/board/qtpy_m0/
 The original QT Py does not have an LED, but just that RGB NeoPixel, and that is NeoPixel, not DotStar like on the Trinket M0.
 
 So the code will need to be adapted so that it works with NeoPixel, and the fast blinking of the LED will have to be done with the NeoPixel too.
-
