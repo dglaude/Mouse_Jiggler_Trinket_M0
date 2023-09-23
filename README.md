@@ -12,7 +12,7 @@ Minimum installation only require the file `code.py` and a few libraries:
 * `adafruit_dotstar` (mpy file)
 * `adafruit_pixelbuf` (mpy file)
 
-*UPDATE* This has not been tested with the new release 6.0.0 of adafruit_hid ( https://github.com/adafruit/Adafruit_CircuitPython_HID/releases/tag/6.0.0 ) that add a control of the timer when the host is slow to boot and to do USB enumeration. My code use an active wait checking the USB status via supervisor and blinking rapidly to tell you there is something wrong.
+*UPDATE* I successfully tested the code with new release 6.0.0 of adafruit_hid ( https://github.com/adafruit/Adafruit_CircuitPython_HID/releases/tag/6.0.0 ). That add a control of the timer when the host is slow to boot and to do USB enumeration. Since my code use an active wait checking the USB status via supervisor and blinking rapidly to tell you there is something wrong, that is still active at startup. It may have a different behavior when the host shutdown, or in between the BIOS USB enumeration and the OS USB enumeration. I still have to investigate.
 
 If you want to customize the behaviour, you can add the file  `muconfig.py` and edit to uncomment some line and choose the value you want to use in place of the default.
 
